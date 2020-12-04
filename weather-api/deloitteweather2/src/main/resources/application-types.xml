@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<types:mule xmlns:types="http://www.mulesoft.org/schema/mule/types">
+  <types:catalog>
+    <types:type name="GetWeatherMeta" format="xml">
+      <types:example format="xml" element="weather" location="examples/GetWeatherExample.xml"/>
+    </types:type>
+    <types:type name="GetCitiesByCountry" format="xml">
+      <types:example format="xml" element="Cities" location="examples/CitiesByCountry.xml"/>
+    </types:type>
+  </types:catalog>
+  <types:enrichment select="#16369914-fc9e-4955-9c80-bcf886356e01"/>
+  <types:enrichment select="#4c9b9b04-dc30-495b-98b5-d1a3c987d56d">
+    <types:processor-declaration>
+      <types:output-event>
+        <types:message>
+          <types:payload type="GetWeatherMeta"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#d3537928-7f6d-4bda-bcbd-ceef9e4d1538">
+    <types:processor-declaration>
+      <types:output-event>
+        <types:message>
+          <types:payload type="GetCitiesByCountry"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+</types:mule>
